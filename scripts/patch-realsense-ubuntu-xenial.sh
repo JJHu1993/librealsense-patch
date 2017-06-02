@@ -21,7 +21,7 @@ LINUX_BRANCH=$(uname -r)
 kernel_name="ubuntu-xenial"
 
 # Download the latest the linux kernel sources from ubuntu-xenial tree
-[ ! -d ${kernel_name} ] && git clone git://kernel.ubuntu.com/ubuntu/ubuntu-xenial.git -b hwe --depth 1
+[ ! -d ${kernel_name} ] && git clone git://kernel.ubuntu.com/ubuntu/ubuntu-xenial.git -b hwe --depth 1 
 cd ${kernel_name}
 
 # Verify that there are no trailing changes., warn the user to make corrective action if needed
@@ -43,7 +43,7 @@ then
 		printf "Resetting local changes in %s folder\n " ${kernel_name}
 		git reset --hard
 		echo -e "\e[32mUpdate the folder content with the latest from mainline branch\e[0m"
-		git pull origin master
+		git pull origin hwe --depth 1
 	fi
 fi
 
